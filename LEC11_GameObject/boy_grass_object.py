@@ -1,15 +1,9 @@
-﻿import os
-from pathlib import Path
-
-os.chdir(Path(__file__).resolve().parent)
-
+﻿
 from pico2d import *
 import random
 
 
 # Game object class here
-
-running = True
 
 
 
@@ -94,9 +88,10 @@ class Ball:
             bound = 41 
         if self.y  >= 600 - (bound / 2):
             self.y = 600 - 2 * (bound/2)
-            
+
+    
     def draw(self):
-        pass
+        self.image.draw(self.x, self.y)
             
 
 
@@ -109,49 +104,42 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
 
-
 def reset_world():
     global running
-    running = True
-
-
-    # 객체들을 담는 world list
     global world
+
+    running = True
     world = []
 
     grass = Grass()
     world.append(grass)
 
-    team = [Boy() for i in range(10)]
-    world.extend(team)
+    team = [Boy() for i in range(11)]
+    world += team
 
-    zombie = Zombie()
-    world.append(zombie)
+    ball = [Ball() for i in range(20)]
+    world += ball
 
 def update_world():
-
-    for d in world:
-        d.update()
-
+    for o in world:
+        o.update()
 
 def render_world():
     clear_canvas()
-    for d in world:
-        d.draw()
+
+    for o in world:
+        o.draw()
 
     update_canvas()
 
-
-
 open_canvas()
 
-
 reset_world()
+
 while running:
     handle_events()
-    if not running:
-        break
     update_world()
     render_world()
     delay(0.05)
+
 close_canvas()
