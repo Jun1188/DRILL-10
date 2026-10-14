@@ -49,10 +49,10 @@ class Zombie:
 
 class Ball:
     def __init__(self):
-        self.sel = random.randint(0, 1)
+        self.size = random.randint(0, 1)
         #self.stop
 
-        if self.sel == 0:
+        if self.size == 0:
             self.image = load_image('ball21x21.png')
         else:
             self.image = load_image('ball41x41.png')
@@ -69,7 +69,7 @@ class Ball:
     def update(self):
         self.y += self.v
 
-        if self.sel== 0:
+        if self.size== 0:
             bound = 21
         else:
             bound = 41 
@@ -92,20 +92,7 @@ def handle_events():
             running = False
 
 def reset_world():
-    global running
-    global world
-
-    running = True
-    world = []
-
-    grass = Grass()
-    world.append(grass)
-
-    team = [Boy() for i in range(11)]
-    world += team
-
-    ball = [Ball() for i in range(20)]
-    world += ball
+    
 
 def update_world():
     for o in world:
