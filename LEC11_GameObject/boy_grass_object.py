@@ -85,8 +85,15 @@ class Ball:
         
         self.mode = 0
 
-    def update(self):  
-        pass 
+    def update(self):
+        self.y += self.v
+
+        if self.sel== 0:
+            bound = 21
+        else:
+            bound = 41 
+        if self.y  >= 600 - (bound / 2):
+            self.y = 600 - 2 * (bound/2)
             
     def draw(self):
         pass
