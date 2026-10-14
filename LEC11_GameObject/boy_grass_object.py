@@ -27,6 +27,7 @@ class Grass:
 
 
 ballSpeeds = []
+ballsSizes = []
 
 
 class Boy:
@@ -60,30 +61,36 @@ class Zombie:
 
 class Ball:
     def __init__(self):
-            self.x, self.y = 100, 170
-            self.frame = 0
-            global ballSpeeds
-            while True: #Ball speed
-                notSame = True
-                self.speedY = random.randint(1, 10)
-                for b in ballSpeeds:
-                    if b == self.speedY:
-                        notSame = False
-                        break
+        self.sel = random.randint(0, 1)
 
-                if notSame:
-                    break
-
+        if self.sel == 0:
+            self.image = load_image('ball21x21.png')
+        else:
             self.image = load_image('ball41x41.png')
-        def update(self):   
-            self.frame = (self.frame + 1) % 10
-            self.y += self.speedY
-            if self.image.w
-        def draw(self):
-            frame_width = self.image.w // 10
-            frame_height = self.image.h
-            self.image.clip_draw(self.frame * frame_width, 0, frame_width, frame_height,
-            self.x, self.y, frame_width // 2, frame_height // 2)
+
+        self.x = random.randint(50, 750)
+        self.y = 60
+        self.v = random.randint(1, 10)
+        global ballSpeeds
+        while True: #Ball speed 교차체크
+            notSame = True
+            self.v = random.randint(1, 10)
+            for b in ballSpeeds:
+                if b == self.v:
+                    notSame = False
+                    break
+            if notSame:
+                ballSpeeds.append(self.v)
+                break
+        
+        self.mode = 0
+
+    def update(self):  
+        pass 
+            
+    def draw(self):
+        pass
+            
 
 
 def handle_events():
