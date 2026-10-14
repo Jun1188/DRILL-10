@@ -15,7 +15,7 @@ class Grass:
     def update(self):
         pass
 
-ballSpeeds = []
+ballSpeeds = [11]
 ballsSizes = []
 
 
@@ -51,6 +51,7 @@ class Zombie:
 class Ball:
     def __init__(self):
         self.sel = random.randint(0, 1)
+        #self.stop
 
         if self.sel == 0:
             self.image = load_image('ball21x21.png')
@@ -60,19 +61,20 @@ class Ball:
         self.x = random.randint(50, 750)
         self.y = 60
         self.v = random.randint(1, 10)
-        #global ballSpeeds
-        #while True: #Ball speed 교차체크
-        #    notSame = True
-        #    self.v = random.randint(1, 10)
-        #    for b in ballSpeeds:
-        #        if b == self.v:
-        #            notSame = False
-        #            break
-        #    if notSame:
-        #        ballSpeeds.append(self.v)
-        #        break
-        #
+        global ballSpeeds
+        while True: #Ball speed 교차체크
+            notSame = True
+            self.v = random.randint(1, 10)
+            for b in ballSpeeds:
+                if b == self.v:
+                    notSame = False
+                    break
+            if notSame == True:
+                ballSpeeds.append(self.v)
+                break
+        
         self.mode = 0
+        print(self.v)
 
     def update(self):
         self.y += self.v
