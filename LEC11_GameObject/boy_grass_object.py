@@ -69,14 +69,17 @@ class Ball:
 
     def update(self):
         self.y += self.v
-
+    
         if self.size== 0:
             bound = 21
         else:
             bound = 41 
         half_bound = bound / 2
-        if self.y  >= 600 - half_bound:
-            self.y = 600 - 3 * half_bound
+        max_y = 600 - half_bound
+        
+        if self.y  >= max_y:
+            self.y = 600 - 2 * half_bound
+ 
 
     
     def draw(self):
