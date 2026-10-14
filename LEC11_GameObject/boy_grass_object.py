@@ -1,7 +1,5 @@
-﻿
-from pico2d import *
+﻿from pico2d import *
 import random
-
 
 # Game object class here
 
@@ -16,9 +14,6 @@ class Grass:
         self.img.draw(self.grassX, self.grassY)
     def update(self):
         pass
-    def drawAt(self, x, y):
-        self.img.draw(x, y)
-
 
 ballSpeeds = []
 ballsSizes = []
@@ -65,18 +60,18 @@ class Ball:
         self.x = random.randint(50, 750)
         self.y = 60
         self.v = random.randint(1, 10)
-        global ballSpeeds
-        while True: #Ball speed 교차체크
-            notSame = True
-            self.v = random.randint(1, 10)
-            for b in ballSpeeds:
-                if b == self.v:
-                    notSame = False
-                    break
-            if notSame:
-                ballSpeeds.append(self.v)
-                break
-        
+        #global ballSpeeds
+        #while True: #Ball speed 교차체크
+        #    notSame = True
+        #    self.v = random.randint(1, 10)
+        #    for b in ballSpeeds:
+        #        if b == self.v:
+        #            notSame = False
+        #            break
+        #    if notSame:
+        #        ballSpeeds.append(self.v)
+        #        break
+        #
         self.mode = 0
 
     def update(self):
