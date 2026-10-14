@@ -51,6 +51,7 @@ class Ball:
     def __init__(self):
         self.size = random.randint(0, 1)
         #self.stop
+        self.step = 0
 
         if self.size == 0:
             self.image = load_image('ball21x21.png')
@@ -73,8 +74,9 @@ class Ball:
             bound = 21
         else:
             bound = 41 
-        if self.y  >= 600 - (bound / 2):
-            self.y = 600 - 2 * (bound/2)
+        half_bound = bound / 2
+        if self.y  >= 600 - half_bound:
+            self.y = 600 - 3 * half_bound
 
     
     def draw(self):
