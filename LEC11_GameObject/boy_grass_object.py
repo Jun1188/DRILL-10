@@ -92,7 +92,20 @@ def handle_events():
             running = False
 
 def reset_world():
-    
+    global running
+    global world
+
+    running = True
+    world = []
+
+    grass = Grass()
+    world.append(grass)
+
+    team = [Boy() for i in range(11)]
+    world += team
+
+    ball = [Ball() for i in range(20)]
+    world += ball
 
 def update_world():
     for o in world:
