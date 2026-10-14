@@ -15,8 +15,7 @@ class Grass:
     def update(self):
         pass
 
-ballSpeeds = [11]
-ballsSizes = []
+
 
 
 class Boy:
@@ -60,21 +59,12 @@ class Ball:
 
         self.x = random.randint(50, 750)
         self.y = 60
-        self.v = random.randint(1, 10)
-        global ballSpeeds
-        while True: #Ball speed 교차체크
-            notSame = True
-            self.v = random.randint(1, 10)
-            for b in ballSpeeds:
-                if b == self.v:
-                    notSame = False
-                    break
-            if notSame == True:
-                ballSpeeds.append(self.v)
-                break
+        self.v = random.randint(1, 20)
+        
+        
         
         self.mode = 0
-        print(self.v)
+       
 
     def update(self):
         self.y += self.v
